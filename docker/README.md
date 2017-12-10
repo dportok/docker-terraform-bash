@@ -28,8 +28,11 @@ In order for the user to achive this he should run the following command:
 ``` docker run -it -d -e REDIS_PORT_NUMBER='8000' -e MAX_MEMORY=64mb <name_of_the_image>``` 
 
 In order to ensure that the modified ENV variables are in place the user could run the following commands: 
+
 ```docker exec -it <container_id> env ```
+
 The output of the previous commands will look like this: 
+
 ```PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 HOSTNAME=92101d09e915
 TERM=xterm
@@ -41,27 +44,4 @@ REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-4.0.6.tar.gz
 REDIS_DOWNLOAD_SHA=769b5d69ec237c3e0481a262ff5306ce30db9b5c8ceb14d1023491ca7be5f6fa
 HOME=/root ```
 
-Also the user can also check the logs of the created container by running ```docker logs <container_id> ``` :
-``` 
-10:C 10 Dec 14:17:44.159 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-10:C 10 Dec 14:17:44.159 # Redis version=4.0.6, bits=64, commit=00000000, modified=0, pid=10, just started
-10:C 10 Dec 14:17:44.159 # Configuration loaded
-                _._                                                  
-           _.-``__ ''-._                                             
-      _.-``    `.  `_.  ''-._           Redis 4.0.6 (00000000/0) 64 bit
-  .-`` .-```.  ```\/    _.,_ ''-._                                   
- (    '      ,       .-`  | `,    )     Running in standalone mode
- |`-._`-...-` __...-.``-._|'` _.-'|     Port: 8000
- |    `-._   `._    /     _.-'    |     PID: 10
-  `-._    `-._  `-./  _.-'    _.-'                                   
- |`-._`-._    `-.__.-'    _.-'_.-'|                                  
- |    `-._`-._        _.-'_.-'    |           http://redis.io        
-  `-._    `-._`-.__.-'_.-'    _.-'                                   
- |`-._`-._    `-.__.-'    _.-'_.-'|                                  
- |    `-._`-._        _.-'_.-'    |                                  
-  `-._    `-._`-.__.-'_.-'    _.-'                                   
-      `-._    `-.__.-'    _.-'                                       
-          `-._        _.-'                                           
-              `-.__.-'                                               
-
-```
+Also the user can also check the logs of the created container by running ```docker logs <container_id> ``` and check the number of the port show on the output.

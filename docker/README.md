@@ -33,7 +33,8 @@ In order to ensure that the modified ENV variables are in place the user could r
 
 The output of the previous commands will look like this: 
 
-```PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+```
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 HOSTNAME=92101d09e915
 TERM=xterm
 REDIS_PORT_NUMBER=8000 <---- Modified value for the port
@@ -42,6 +43,7 @@ GOSU_VERSION=1.10
 REDIS_VERSION=4.0.6
 REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-4.0.6.tar.gz
 REDIS_DOWNLOAD_SHA=769b5d69ec237c3e0481a262ff5306ce30db9b5c8ceb14d1023491ca7be5f6fa
-HOME=/root ```
+HOME=/root
+``` 
 
-Also the user can also check the logs of the created container by running ```docker logs <container_id> ``` and check the number of the port show on the output.
+Also the user can also check the logs of the created container by running ```docker logs <container_id> ``` and check the number of the port shown on the output.

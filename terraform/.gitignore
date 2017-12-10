@@ -1,0 +1,6 @@
+# Compiled files
+*.tfstate
+*.tfstate.backup
+main.tf-e
+# Module directory
+.terraform/

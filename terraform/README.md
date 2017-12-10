@@ -1,6 +1,6 @@
 # Fully automated deployment of an EC2 Instance running the Latest Ubuntu LTS
 
-This Proof of Concept was created as part of a task, which requires the creation of an EC2 Instance, which should run the latest Ubuntu LTS version and allows HTTP, HTTPS and SSH traffice from a specific IP.
+This Proof of Concept was created as part of a task, which requires the creation of an EC2 Instance, which should run the latest Ubuntu LTS AMI and allows HTTP, HTTPS and SSH traffic from a specific IP.
 
 ## Requirements
 The whole project was built using AWS as the cloud provider and Terraform v0.10.8 as the provisioning tool.
@@ -23,6 +23,7 @@ The structure of the directory which contains the code is shown below :
 │   └── sg_rules
 │       ├── main.tf
 │       └── variables.tf
+├── outputs.tf
 ├── terraform.tfvars
 └── variables.tf
 ```
@@ -32,7 +33,7 @@ For storing the AWS credentials, a free tool called aws-vault was used :
 
 [Aws-Vault](https://github.com/99designs/aws-vault)
 
-In order to define S3 as the Backend for the state file, it is implied that the appropriate S3 bucket exists in order for the state file to be saved. That means in a new setup where no resource exists in advance the initialization of terraform will throw an error similar to the following : 
+In order to define S3 as the Backend for the state file, it is implied that the appropriate S3 bucket exists in order for the state file to be saved. In a fresh setup where no resource exists in advance, the initialization of terraform will throw an error similar to the following: 
 ```
 terraform init
 
@@ -52,18 +53,18 @@ After the user has setup his profile on the aws-vault tool, he can then run the 
 
 ```./bootstrap.sh```
 
-After the environment is built the user will have on his terminal as an output, the public IP of the EC2 Instance.
+After the environment is built the user will have on his terminal as an output, the public IP of the EC2 Instance where he could ssh.
 
 In order to destroy the infrastructure the user should run :
 ```./destroy.sh``` 
 
 ## AWS Infrastructure
 
-The AWS Infrastructure which is used for this PoC contains the following components :
+The AWS Infrastructure which is used for this PoC contains the following components:
 * 1 VPC
 * 1 public subnet
 * 1 IGW
-* 1 EC2 Instance running the latest Ubuntu LTS version
+* 1 EC2 Instance running the latest Ubuntu LTS AMI
 * 1 S3 bucket to store the state file of Terraform
-* The appropriate Security Group with corresponding rules
+* The appropriate Security Group with the corresponding rules
 * A DynamoDB table that provides the locking mechanism for the state file

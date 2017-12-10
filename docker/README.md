@@ -2,11 +2,10 @@
 This Proof of Concept was created as part of a task, which requires the creation of a Dockerfile (based on Redis official Image) that allows the user to change the default port and memory limit configuration during runtime by using ENV variables.
 
 ## Requirements
-The whole project was built using Docker for Mac version 17.09.0.
+The whole project was built using Docker for Mac version 17.09.0
 
 ## How to use the files included in this repository
-The structure of the directory which contains the code is shown below :
-
+The structure of the directory which contains the code is shown below:
 
 ```
 .
@@ -14,18 +13,17 @@ The structure of the directory which contains the code is shown below :
 ├── README.md
 ├── docker-entrypoint.sh
 └── redis.conf
-
 ```
 
-## How to build the Image and create a container
-In order for the user to build the Image he should invoke the following command (assuming that he is on the directory where the Dockerfile is placed):
+## How to build the Image and create a Container
+In order for the user to build the Image, he should invoke the following command (assuming that he is on the directory where the Dockerfile is placed):
 
 ``` docker build -t <name_of_the_image> .```
 
-After that the user could spin up a container based on this image by using different values for the port and maxmemory limit configuration. This is done by using a modified ``` redis.conf ``` instead of the default one that allows us to pass as ENV variables the values that correspond to the port and the maxmemory. The default values of these ENV variables are defined on the Dockerfile.
-In order for the user to achive this he should run the following command:
+After that the user could spin up a container based on this image by using different values for the port and maxmemory limit configuration than the default ones. This is done by using a modified ``` redis.conf ``` instead of the default one that allows us to pass as ENV variables the values that correspond to the port and the maxmemory. The default values of these ENV variables are defined on the Dockerfile.
+In order for the user to bring up a redis image with different values for the port and maxmemory he should run the following command:
 
-``` docker run -it -d -e REDIS_PORT_NUMBER='8000' -e MAX_MEMORY=64mb <name_of_the_image>``` 
+``` e.g docker run -it -d -e REDIS_PORT_NUMBER='8000' -e MAX_MEMORY=64mb <name_of_the_image>``` 
 
 In order to ensure that the modified ENV variables are in place the user could run the following commands: 
 

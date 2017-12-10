@@ -1,17 +1,23 @@
 #!/usr/bin/env bats
 
-for count in {11..88};do
+for ((count=11;count<=88;count+=11)); do
   @test "Check the size of each 11th file" {
     result="$(ls -l ./files/random-file.${count} | cut -d ' ' -f8)"
-    [ "$result" -eq 510 ]
+    [ "$result" == "510" ]
   }
-let "count += 11";
-done
+ done
 
-for counter in {5..95};do
+ for ((counter=5;counter<=95;counter+=5)); do
   @test "Check the size of each 5th file" {
     result="$(ls -l ./files/random-file.${counter} | cut -d ' ' -f8)"
-    [ "$result" -eq 19 ]
+    [ "$result" == "19" ]
   }
-let "counter += 5";
-done
+ done
+
+  for ((size=1;size<=99;size+=1)); do
+  @test "Check the size of each file" {
+    result="$(ls -l ./files/random-file.${size} | cut -d ' ' -f8)"
+    integer="$(( $result | bc))"
+    [ "$integer" -le 512 ]
+  }
+ done
